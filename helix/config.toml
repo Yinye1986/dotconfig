@@ -1,0 +1,39 @@
+# 25.07.1
+theme = "gruvbox_dark_soft"
+
+[editor]
+default-yank-register = '+'
+# cursorline = true
+trim-final-newlines = true
+trim-trailing-whitespace = true
+jump-label-alphabet = "anresitodhjgbvkplcmfuwyqzx"
+clipboard-provider = "wayland"
+
+[keys.normal]
+a = { a = "append_mode", i = "insert_mode", A = "insert_at_line_end", I = "insert_at_line_start" }
+n = "move_char_left"
+e = "move_line_down"
+i = "move_line_up"
+o = "move_char_right"
+"'" = "open_below"
+'"' = "open_above"
+# Selection manipulation
+"A-e" = "copy_selection_on_next_line"
+"A-i" = "copy_selection_on_prev_line"
+0 = "goto_line_start"
+f = "goto_word"
+# Search
+l = "search_next"
+L = "search_prev"
+
+[keys.select]
+n = "extend_char_left"
+e = "extend_line_down"
+i = "extend_line_up"
+o = "extend_char_right"
+
+[keys.insert]
+C-n = "move_char_left"
+C-e = "move_line_down"
+C-i = "move_line_up"
+C-o = "move_char_right"
