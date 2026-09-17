@@ -1,0 +1,216 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            variant "colemak"
+            options "altwin:swap_lalt_lwin"
+            // model ""
+            // rules ""
+            // file "~/.config/keymap.xkb"
+        }
+        // repeat-delay 600
+        // repeat-rate 25
+        // track-layout "global"
+        numlock
+    }
+    touchpad {
+        // off
+        tap
+        dwt
+        // dwtp
+        // drag false
+        // drag-lock
+        natural-scroll
+        // accel-speed 0.2
+        accel-profile "flat"
+        // scroll-factor 1.0
+        // scroll-factor vertical=1.0 horizontal=-2.0
+        // scroll-method "two-finger"
+        // scroll-button 273
+        // scroll-button-lock
+        tap-button-map "left-right-middle"
+        click-method "clickfinger"
+        // left-handed
+        disabled-on-external-mouse
+        // middle-emulation
+    }
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        accel-profile "flat"
+        // scroll-factor 1.0
+        // scroll-factor vertical=1.0 horizontal=-2.0
+        // scroll-method "no-scroll"
+        // scroll-button 273
+        // scroll-button-lock
+        // left-handed
+        // middle-emulation
+    }
+}
+
+output "eDP-1" {
+    // off
+    mode "2560x1600@120.001"
+    scale 1.5
+    transform "normal"
+    position x=0 y=0
+    variable-refresh-rate
+    focus-at-startup
+    backdrop-color "#f00056"
+    // max-bpc 8
+    hot-corners {
+        // off
+        bottom-left
+    }
+    layout {
+    }
+}
+
+layout {
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd // client-side decorations
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// screenshot-path null
+
+animations {
+    off
+    // slowdown 3.0
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+    exit-confirmation-open-close {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    recent-windows-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.001
+    }
+}
+
+binds {
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Ctrl+Space                    { switch-layout "next"; }
+
+    Print      { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print  { screenshot-window; }
+
+    Mod+Ctrl+L { spawn "swaylock"; }
+    Mod+Ctrl+Q { quit; }
+    Mod+Ctrl+P { power-off-monitors; }
+
+    Mod+Shift+Q repeat=false { close-window; }
+    Mod+Shift+Return         { spawn "alacritty"; }
+    Mod+D                    { spawn "fuzzel"; }
+
+    Mod+Shift+Slash             { show-hotkey-overlay; }
+    Mod+Apostrophe repeat=false { toggle-overview; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    Mod+WheelScrollLeft                      { focus-column-left; }
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollRight                     { focus-column-right; }
+    Mod+Shift+WheelScrollUp                  { focus-column-left; }
+    Mod+Shift+WheelScrollDown                { focus-column-right; }
+    Mod+N            { focus-column-left; }
+    Mod+E            { focus-window-or-workspace-down; }
+    Mod+I            { focus-window-or-workspace-up; }
+    Mod+O            { focus-column-right; }
+    Mod+Shift+N      { move-column-left; }
+    Mod+Shift+E      { move-column-to-workspace-down; }
+    Mod+Shift+I      { move-column-to-workspace-up; }
+    Mod+Shift+O      { move-column-right; }
+    Mod+Shift+Ctrl+N { consume-or-expel-window-left; }
+    Mod+Shift+Ctrl+E { move-workspace-down; }
+    Mod+Shift+Ctrl+I { move-workspace-up; }
+    Mod+Shift+Ctrl+O { consume-or-expel-window-right; }
+    // Mod+Left             { focus-monitor-left; }
+    // Mod+Down             { focus-monitor-down; }
+    // Mod+Up               { focus-monitor-up; }
+    // Mod+Right            { focus-monitor-right; }
+    // Mod+Shift+Left       { move-column-to-monitor-left; }
+    // Mod+Shift+Down       { move-column-to-monitor-down; }
+    // Mod+Shift+Up         { move-column-to-monitor-up; }
+    // Mod+Shift+Right      { move-column-to-monitor-right; }
+    // Mod+Ctrl+Shift+Left  { move-workspace-to-monitor-left; }
+    // Mod+Ctrl+Shift+Down  { move-workspace-to-monitor-down; }
+    // Mod+Ctrl+Shift+Up    { move-workspace-to-monitor-up; }
+    // Mod+Ctrl+Shift+Right { move-workspace-to-monitor-right; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+C             { center-column; }
+    Mod+Shift+Ctrl+C  { center-visible-columns; }
+    Mod+Tab           { focus-workspace-previous; }
+    Mod+M             { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+M       { toggle-window-floating; }
+    Mod+Shift+Ctrl+M  { toggle-column-tabbed-display; }
+
+    Mod+F           { maximize-window-to-edges; }
+    Mod+Shift+F     { fullscreen-window; }
+    Mod+Ctrl+F      { expand-column-to-available-width; }
+    Mod+Minus       { set-column-width "-10%"; }
+    Mod+Equal       { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+}
