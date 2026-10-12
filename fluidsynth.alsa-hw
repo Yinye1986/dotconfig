@@ -4,11 +4,7 @@ set audio.realtime-prio 99
 set audio.period-size 128
 set audio.periods 2
 
-
-
 set midi.driver alsa_seq
-
-
 
 set synth.cpu-cores 1
 set synth.sample-rate 48000.0

@@ -7,7 +7,6 @@ set midi.alsa_seq.id 1
 set midi.portname stainway
 set midi.autoconnect 1
 
-
 set synth.cpu-cores 1
 set synth.sample-rate 48000.0
 set synth.polyphony 256
