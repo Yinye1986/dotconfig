@@ -1,0 +1,21 @@
+# 0.17.0
+# https://raw.githubusercontent.com/alacritty/alacritty-theme/refs/heads/master/themes/gruvbox_material_soft_dark.toml[general]
+
+[general]
+import = [
+    "./gruvbox_material_soft_dark.toml"
+]
+
+[window]
+dynamic_padding = true
+resize_increments = true
+
+[font]
+normal = { family = "UbuntuMono Nerd Font Mono" }
+size = 14
+
+[terminal]
+shell = { program = "fish", args = [ "-l",] }
+
+[mouse]
+hide_when_typing = true

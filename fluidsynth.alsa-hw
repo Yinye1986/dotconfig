@@ -1,0 +1,19 @@
+set audio.driver alsa
+set audio.alsa.device hw:1,0
+set audio.realtime-prio 99
+set audio.period-size 128
+set audio.periods 2
+
+
+
+set midi.driver alsa_seq
+
+
+
+set synth.cpu-cores 1
+set synth.sample-rate 48000.0
+set synth.polyphony 256
+set synth.gain 1.0
+set synth.reverb.active 0
+set synth.chorus.active 0
+load /myfiles/sf2/D-274.sf2
